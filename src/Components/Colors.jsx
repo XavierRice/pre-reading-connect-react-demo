@@ -5,6 +5,22 @@ const API = import.meta.env.VITE_API_URL;
 
 function Colors() {
   const [colors, setColors] = useState([]);
+  
+  const fetchColors = async () =>{
+    try {
+      const res = fetch(`${API}/colors`)
+      .then(res => res.json())
+      .then(resJson => {
+        setColors(resJson)
+      })
+    } catch(error){
+      return error
+    }
+  }
+
+ useEffect(()=>{
+  fetchColors()
+ }, [colors])
 
   return (
     <div className="Colors">
@@ -19,7 +35,7 @@ function Colors() {
           </thead>
           <tbody>
             {colors.map((color, index) => {
-              return <Color key={index} color={color} index={index} />;
+              return <Color key={color.id} color={color} />;
             })}
           </tbody>
         </table>

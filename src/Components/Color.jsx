@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // wont refresh our page like an a tab
 
-function Color({ color, index }) {
+function Color({ color }) {
   return (
     <tr>
       <td>
@@ -11,7 +11,7 @@ function Color({ color, index }) {
         )}
       </td>
       <td>
-        <Link to={`/colors/${index}`}> {color.name}</Link>
+        <Link to={`/colors/${color.id}`}> {color.name}</Link>
       </td>
       <td>
         {" "}
